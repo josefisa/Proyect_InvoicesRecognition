@@ -1,0 +1,108 @@
+\documentclass[12pt,a4paper]{article}
+
+% ==== PAQUETES ====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% ==== CONFIGURACIÓN ====
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+\setstretch{1.1}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+% ==== DOCUMENTO ====
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Consolidación de Facturas Contables}}\\[0.4cm]
+    {\large José Emanuel Figueroa, Juan Esteban Correa, Esteban Alexander Arias}\\[0.2cm]
+    \texttt{josee.figueroas; juane.correap; estebana.ariasg@utadeo.edu.co}\\[0.3cm]
+    Universidad Jorge Tadeo Lozano — Programa: Ciencias de Datos, Modelado y Simulación\\
+    Curso: Inteligencia Artificial — Bogotá D.C., Colombia\\
+    05 de octubre de 2025
+\end{center}
+
+\vspace{0.5cm}
+
+\section*{1. Resumen}
+
+Proponemos una aplicación de tipo móvil (Android) o implementada en Web, con interfaz para equipos móviles, consistente en una IA de tipo \textbf{Intelligent Document Processing pipeline}, con la capacidad de analizar facturas individuales de tipo talonario y clasificar los datos contenidos en estas: nombre de la empresa emisora, NIT, dirección, fecha de emisión, cliente, productos vendidos o comprados, cantidad, valor en COP, con la capacidad de exportar estos datos a una tabla de Excel, con el fin de que los equipos contables puedan usar este formato (\texttt{.xlsx}) en sus labores contables. Se busca un error menor al 1/20, siendo esta la versión inicial o \textit{pitch} de la aplicación.
+
+\section*{2. Problema local y motivación}
+
+En aras de mantener un sistema fiscal consolidado, la DIAN  necesitan recaudar información contable de todos los negocios inscritos como personas jurídicas. La mayoría de estos negocios están compuestos por menos de cinco personas como empleados calificados en cualquier actividad menos la contable.
+
+Estas personas dependen de contratar un contador de profesión, quien realiza la Declaración de Renta anual y visita la empresa mensualmente para consolidar las cuentas. Como estos negocios no poseen una persona dedicada a tiempo completo para registrar las facturas, tanto de ventas como de compras, el contador visitante debe pasar al menos un día completo registrándoles manualmente en una hoja de cálculo antes de iniciar el análisis contable. 
+
+La idea de desarrollar una aplicación con IA capaz de reconocer óptica-mente el texto en las facturas y completar automáticamente una hoja de cálculo permitirá que tanto el contador como el negocio accedan fácilmente a la información contable consolidada.
+
+\section*{3. Dataset}
+
+Varios de los miembros del equipo trabajamos en el área contable, y con ciertos permisos hemos logrado acceder a una fuente de facturas tipo talonario, este dataset sigue siendo propiedad de las empresas que lo registran y se usa únicamente con fines académicos. La cantidad de documentos es variable debido al tipo de talonario, la diversidad de negocios y la caligrafía particular de cada persona que lo diligencia.
+
+El dataset principal estará compuesto por 300 imágenes de facturas reales proporcionadas por la compañia contable M\&M Consultorias SAS. Estas facturas estarán en formato de imagen (.jpg o .png) y contendrán variables como el nombre del emisor, NIT, fecha, descripción de productos, valores, IVA y totales. Su licencia será de uso interno académico con consentimiento, y la diversidad de tipos de factura, caligrafías y diseños garantizará una adecuada representatividad. Como fuentes públicas complementarias, se emplearán conjuntos de OCR abiertos como el \href{https://guillaumejaume.github.io/FUNSD/}{FUNSD Dataset} y el \href{https://rrc.cvc.uab.es/?ch=13}{SROIE 2019 Dataset}.
+
+
+\section*{4. Tarea de IA y algoritmo(s)}
+
+La aplicación se compondrá de dos módulos: uno de \textbf{detección de caracteres} y otro de \textbf{clasificación semántica}, con una consolidación programática posterior en una hoja de cálculo.
+
+El reconocimiento de caracteres se basará en \textbf{Deep Learning}, específicamente en redes convolucionales (CNN), utilizando modelos de OCR (\textit{Optical Character Recognition}) como \textbf{Tesseract 5}, \textbf{Google Cloud Vision} y \textbf{Amazon Textract}, que usan arquitecturas RNN, LSTM o Transformer con mecanismos de \textit{Self-Attention}, \textit{Differentiable Binarization} o YOLO. 
+
+El segundo módulo, de clasificación, aplicará técnicas de \textbf{NLP} mediante modelos como \textbf{NER} o \textbf{BERT}, para clasificar los campos extraídos en categorías comprensibles (NIT, fecha, valor, productos, etc.). Se prestará atención a modelos \textit{open source} como \textbf{PaddleOCR}, \textbf{EasyOCR}, \textbf{HuggingFace}, \textbf{LayoutLM} y \textbf{SpaCy}. 
+
+Será necesario realizar \textbf{Fine-Tuning} o \textbf{Transfer Learning} para asegurar una correcta interpretación. Los resultados serán almacenados en formato \texttt{JSON} y exportados a Excel mediante librerías como \texttt{pandas}, \texttt{openpyxl} o \texttt{xlsxwriter}. Finalmente, la interfaz se desarrollará con Dart y Flutter, o con JavaScript.
+
+\section*{5. Metodología y evaluación}
+
+Las facturas serán escaneadas con smartphones —el medio previsto para su uso real—, aplicando conversión a alto contraste para mejorar la lectura del OCR. Se usará una división 70/30 para entrenamiento y prueba, seleccionando ejemplos variados. Los resultados se compararán con una consolidación humana basada en los valores reales.
+
+\textbf{Fases del proceso:}
+\begin{itemize}
+    \item \textbf{Preprocesamiento:} conversión a escala de grises, binarización adaptativa, aumento de contraste y eliminación de ruido.
+    \item \textbf{Entrenamiento y validación:} división del dataset (70/15/15) y \textit{transfer learning} para adaptar modelos preentrenados.
+    \item \textbf{Evaluación:} métricas como \textit{Character Accuracy Rate (CAR)}, \textit{Word Error Rate (WER)} y \textit{F1-score}.
+    \item \textbf{Líneas base:} comparación con OCR comerciales sin ajuste, como Tesseract sin fine-tuning.
+\end{itemize}
+
+\section*{6. Resultados esperados, ética y cronograma}
+
+Se espera que el sistema alcance una precisión superior al 95\% en reconocimiento y clasificación, reduciendo en al menos 60\% el tiempo promedio que los contadores dedican al registro manual. Esto permitirá a las microempresas mejorar su trazabilidad contable y reducir errores.
+
+\textbf{Consideraciones éticas:} los datos personales serán anonimizados y cifrados; las copias locales serán eliminadas. Todo el material se utilizará con consentimiento y fines académicos.
+
+\textbf{Cronograma tentativo (4 semanas):}
+\begin{itemize}
+    \item Semana 1: recopilación, limpieza y anonimización de datos.
+    \item Semana 2: entrenamiento del modelo OCR y pruebas de preprocesamiento.
+    \item Semana 3: integración del módulo NLP y validación cruzada.
+    \item Semana 4: despliegue del prototipo web/móvil, evaluación y documentación final.
+\end{itemize}
+
+\textbf{Roles del equipo:}
+El equipo de trabajo está conformado por José Emanuel Figueroa, quien asumirá el liderazgo técnico general, el diseño del pipeline de OCR y el ajuste del modelo base; Juan Esteban Correa, encargado de la integración del modelo NLP, la evaluación de resultados y la documentación técnica; y Esteban Alexander Arias, responsable del desarrollo de la interfaz gráfica en Flutter o JavaScript, las pruebas de usuario y la conexión con el módulo contable.
+
+
+\section*{7. Referencias}
+
+Smith, R. “An Overview of the Tesseract OCR Engine.” Proc. ICDAR, 2007.\\
+Jaume, G. \textit{FUNSD: Form Understanding in Noisy Scanned Documents}, 2019.\\
+Xu, Y. et al. “LayoutLMv3: Pre-training for Document AI.” \textit{arXiv:2204.08387}, 2022.\\
+Google Cloud. “Cloud Vision OCR Documentation.”\\
+Amazon AWS. “Textract Developer Guide.”\\
+PaddleOCR, \textit{Open Source OCR System}, GitHub, 2023.\\
+Devlin, J. et al. “BERT: Pre-training of Deep Bidirectional Transformers.” \textit{NAACL-HLT}, 2019.\\
+SpaCy NLP Library, Explosion.ai, 2023.\\
+OpenPyXL Documentation, Python Software Foundation, 2023.\\
+SROIE Dataset, ICDAR 2019 Competition on Scanned Receipts OCR and Information Extraction.
+
+\end{document}
