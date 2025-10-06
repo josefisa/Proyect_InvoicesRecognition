@@ -28,7 +28,7 @@
 |--------|--------|--------|
 | **José Emanuel Figueroa** | [josee.figueroas@utadeo.edu.co](mailto:josee.figueroas@utadeo.edu.co) | [@josefisa](#) |
 | **Juan Esteban Correa** | [juane.correap@utadeo.edu.co](mailto:juane.correap@utadeo.edu.co) | [@juanescorreap](#) |
-| **Esteban Alexander Arias** | [estebana.ariasg@utadeo.edu.co](mailto:estebana.ariasg@utadeo.edu.co) | [@EstebanArias](#) |
+| **Esteban Alexander Arias** | [estebana.ariasg@utadeo.edu.co](mailto:estebana.ariasg@utadeo.edu.co) | [@isildur1-2020](#) |
 
 > 🎓 **Universidad Jorge Tadeo Lozano**  
 > 📚 Programa: Ciencias de Datos - Modelado y Simulación  
