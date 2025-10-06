@@ -26,8 +26,8 @@
 
 | Nombre | Correo | GitHub |
 |--------|--------|--------|
-| **José Emanuel Figueroa** | [josee.figueroas@utadeo.edu.co](mailto:josee.figueroas@utadeo.edu.co) | [@JoseFigueroa](#) |
-| **Juan Esteban Correa** | [juane.correap@utadeo.edu.co](mailto:juane.correap@utadeo.edu.co) | [@JuanCorrea](#) |
+| **José Emanuel Figueroa** | [josee.figueroas@utadeo.edu.co](mailto:josee.figueroas@utadeo.edu.co) | [@josefisa](#) |
+| **Juan Esteban Correa** | [juane.correap@utadeo.edu.co](mailto:juane.correap@utadeo.edu.co) | [@juanescorreap](#) |
 | **Esteban Alexander Arias** | [estebana.ariasg@utadeo.edu.co](mailto:estebana.ariasg@utadeo.edu.co) | [@EstebanArias](#) |
 
 > 🎓 **Universidad Jorge Tadeo Lozano**  
@@ -188,26 +188,20 @@ python -m pytest --cov=src tests/
 
 ---
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
----
-
 ## 📝 Licencia
 
 Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
 
 ---
 
-## 📧 Contacto
+🔒 Derechos de Autor y Uso Comercial
+© 2025 José Emanuel Figueroa, Juan Esteban Correa, Esteban Alexander Arias
+Todos los derechos reservados.
+Este proyecto es de propiedad exclusiva de los autores y está protegido por las leyes de derechos de autor.
+⚖️ Licencia Comercial
 
-Para preguntas o sugerencias, contacta a cualquier miembro del equipo:
+✅ Uso comercial permitido solo por los autores
+❌ Prohibida la redistribución sin autorización expresa
 
 - 📧 José Emanuel Figueroa: josee.figueroas@utadeo.edu.co
 - 📧 Juan Esteban Correa: juane.correap@utadeo.edu.co
