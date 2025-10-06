@@ -8,7 +8,8 @@
 \usepackage{setspace}
 \usepackage{hyperref}
 \usepackage{xcolor}
-
+\usepackage[style=numeric]{biblatex}
+\addbibresource{referencias.bib} 
 % ==== CONFIGURACIÓN ====
 \geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
 \setstretch{1.1}
@@ -90,19 +91,9 @@ Se espera que el sistema alcance una precisión superior al 95\% en reconocimien
 
 \textbf{Roles del equipo:}
 El equipo de trabajo está conformado por José Emanuel Figueroa, quien asumirá el liderazgo técnico general, el diseño del pipeline de OCR y el ajuste del modelo base; Juan Esteban Correa, encargado de la integración del modelo NLP, la evaluación de resultados y la documentación técnica; y Esteban Alexander Arias, responsable del desarrollo de la interfaz gráfica en Flutter o JavaScript, las pruebas de usuario y la conexión con el módulo contable.
+\cite{*}
 
-
-\section*{7. Referencias}
-
-Smith, R. “An Overview of the Tesseract OCR Engine.” Proc. ICDAR, 2007.\\
-Jaume, G. \textit{FUNSD: Form Understanding in Noisy Scanned Documents}, 2019.\\
-Xu, Y. et al. “LayoutLMv3: Pre-training for Document AI.” \textit{arXiv:2204.08387}, 2022.\\
-Google Cloud. “Cloud Vision OCR Documentation.”\\
-Amazon AWS. “Textract Developer Guide.”\\
-PaddleOCR, \textit{Open Source OCR System}, GitHub, 2023.\\
-Devlin, J. et al. “BERT: Pre-training of Deep Bidirectional Transformers.” \textit{NAACL-HLT}, 2019.\\
-SpaCy NLP Library, Explosion.ai, 2023.\\
-OpenPyXL Documentation, Python Software Foundation, 2023.\\
-SROIE Dataset, ICDAR 2019 Competition on Scanned Receipts OCR and Information Extraction.
+% Bibliografía - usando biblatex
+\printbibliography[title={Referencias}]
 
 \end{document}
